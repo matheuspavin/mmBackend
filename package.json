@@ -1,0 +1,16 @@
+{
+  "name": "MyMechanicBackend",
+  "version": "0.0.1",
+  "description": "My Mechanic Backend NodeJs",
+  "main": "server.js",
+  "repository": "git@github.com:matheuspavin/mmBackend.git",
+  "author": "matheuspavin <pavinmatheus@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "ui-router": "^1.0.0-alpha.3"
+  }
+}
