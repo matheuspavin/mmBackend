@@ -9,7 +9,7 @@ const config = require('config/config');
 const dev = config.runningMode !== 'prod';
 const express = require('express');
 const app = express();
-const database = require("/server/infra/connnectDataBase.js");
+const database = require("infra/connectDataBase.js");
 
 
 /**
