@@ -1,39 +1,36 @@
-'use strict';
-
-const path = require('path');
-
-require('app-module-path').addPath(path.join(__dirname, '/server'));
-
-const bodyParser = require('body-parser');
-const config = require('config/config');
-const dev = config.runningMode !== 'prod';
-const express = require('express');
+const express = require("express");
 const app = express();
-const database = require("infra/connectDataBase.js");
+const banco = require("./connnectDataBase.js");
+const bodyParser = require('body-parser');
+const sessionService = require('./service/sessionService.js');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-/**
- * Express Setup
- */
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
+app.all('*', function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-access-token");
+	next();
+});
 
-/**
- * Routes
- */
-require('routes')(app);
+app.options('*', function (req, res, next) {
+	res.end();
+});
 
-app.use('/', require('./route/sessionRoute'));
-app.use('/', sessionService.isAuthenticated, require('./route/garageRoute'));
+app.use('/', require('./routes/sessionRoute'));
+app.use('/', sessionService.isAuthenticated, require('./routes/garageRoute'));
 
 app.post('/insert/garage', function(req, res){
 	var garage = req.body;
-	database.insertGarage(garage).then(function(result){
+	banco.insertGarage(garage).then(function(result){
 		result = result[0];
 		var user = {};
 		user.id_garage = result.id;
 		user.password = garage.password;
-		database.insertUser(user).then(function(result){
+		banco.insertUser(user).then(function(result){
 			res.send(user);
 		})
 	})
@@ -41,25 +38,38 @@ app.post('/insert/garage', function(req, res){
 
 app.post('/insert/customer', function(req, res){
 	var customer = req.body;
-	database.insertCustomer(customer).then(function(result){
+	banco.insertCustomer(customer).then(function(result){
 		result = result[0];
 		var user = {};
 		user.id_customer = result.id;
 		user.password = customer.password;
-		database.insertUser(user).then(function(result){
+		banco.insertUser(user).then(function(result){
 			res.send(user);
 		})
 	})
 });
 
-// FIXME: Precisa disso?? ⤵
-process.on('uncaughtException', function (error) {
-    console.log(error.stack);
+app.get('/consultaCliente', function(req, res){
+	banco.listCliente().then(function(resultado){
+		res.send(resultado) ;
+	})
 });
 
-/**
- * Server Listener
- */
-var server = app.listen(3500);
-server.timeout = 300000;
-winston.info('### RUNNING MY MECHANIC BACKEND (' + (dev ? 'development' : 'production') + ' on : ' + server.address().port + ' ) ###');
+app.post('/adicionaPessoa', function(req, res){
+	const newPessoa = req.body;
+	banco.insertPessoa(newPessoa).then(function(resultado){
+		res.send(resultado) ;
+	})
+});
+
+app.post('/deletaPessoa', function(req, res){
+	const delPessoa = req.body;
+	banco.deletaPessoa(delPessoa).then(function(resultado){
+		res.send(resultado) ;
+	})
+});
+
+
+const server = app.listen(8081, function () {
+	console.log("meuMecanico rodando em modo desenvolvimento no ip: ", server.address().address, " e na porta", server.address().port);
+});
