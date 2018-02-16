@@ -1,5 +1,5 @@
 var pg = require('pg');
-var conString = "postgres://postgres@localhost/mymechanic";
+var conString = "postgres://postgres:123456@localhost/mymechanic";
 
 
 
