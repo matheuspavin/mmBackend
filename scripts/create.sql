@@ -10,7 +10,7 @@ CREATE SEQUENCE mymechanic.seq_review START 101;
 CREATE SEQUENCE mymechanic.seq_answer START 101;
 
 create table mymechanic.garage (
-  id integer NOT NULL DEFAULT nextval('seq_garage'),
+  id integer NOT NULL DEFAULT nextval('mymechanic.seq_garage'),
   name text not null,
   email text not null,
   cep text,
@@ -22,7 +22,7 @@ create table mymechanic.garage (
 );
 
 create table mymechanic.customer (
-  id integer NOT NULL DEFAULT nextval('seq_customer'),
+  id integer NOT NULL DEFAULT nextval('mymechanic.seq_customer'),
   name text not null,
   email text not null,
   cep text not null,
@@ -36,7 +36,7 @@ create table mymechanic.customer (
 );
 
 create table mymechanic.user (
-  id integer NOT NULL DEFAULT nextval('seq_user'),
+  id integer NOT NULL DEFAULT nextval('mymechanic.seq_user'),
   id_customer integer,
   id_garage integer,
   primary key (id),
@@ -45,7 +45,7 @@ create table mymechanic.user (
 );
 
 create table mymechanic.review (
-  id integer NOT NULL DEFAULT nextval('seq_review'),
+  id integer NOT NULL DEFAULT nextval('mymechanic.seq_review'),
   id_customer integer,
   id_garage integer,
   id_review integer  default null,
@@ -58,7 +58,7 @@ create table mymechanic.review (
 );
 
 create table mymechanic.answer (
-  id integer NOT NULL DEFAULT nextval('seq_answer'),
+  id integer NOT NULL DEFAULT nextval('mymechanic.seq_answer'),
   id_garage integer,
   id_review integer,
   answer text,
