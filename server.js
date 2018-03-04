@@ -26,7 +26,10 @@ app.options('*', function (req, res, next) {
 });
 
 app.use('/', require('./routes/sessionRoute'));
-app.use('/', sessionService.isAuthenticated, require('./routes/garageRoute'))
+app.use('/garage', sessionService.isAuthenticated, garageRoute);
+app.use('/customer', sessionService.isAuthenticated, customerRoute);
+app.use('/users', sessionService.isAuthenticated, usersRoute);
+
 
 const server = app.listen(8081, function () {
 	console.log("meuMecanico rodando em modo desenvolvimento no ip: ", server.address().address, " e na porta", server.address().port);
