@@ -4,6 +4,7 @@ const co = require('co');
 const sessionService = require('../service/sessionService.js');
 
 router.post('/signin', co.wrap(function* (req, res, next) {
+    console.log(req);
     const user = yield sessionService.authenticate[req.body.type](req.body.email, req.body.password);
     if (user) {
         const token = jwt.sign(user, 'cremefraiche');
