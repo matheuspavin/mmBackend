@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const router = require('express').Router();
-const connectDataBase = require("./connectDataBase.js");
+const connectDataBase = require("../connectDataBase.js");
 const co = require('co');
 const sessionService = require('../service/sessionService.js');
 
