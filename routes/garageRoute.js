@@ -8,7 +8,7 @@ router.get('/garage', function (req, res, next) {
     });
 });
 
-app.post('/garage', function(req, res){
+router.post('/garage', function(req, res){
 	var garage = req.body;
 	banco.insertGarage(garage).then(function(result){
 		result = result[0];
