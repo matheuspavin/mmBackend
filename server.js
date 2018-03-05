@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const banco = require("./connectDataBase.js");
+
 const bodyParser = require('body-parser');
 const sessionService = require('./service/sessionService.js');
 

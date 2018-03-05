@@ -12,7 +12,7 @@ const authenticate = {
 
 const isAuthenticated = function (req, res, next) {
     const token = req.headers['x-access-token'];
-    jwt.verify(token, 'cremefraiche', function (err, user) {
+    jwt.verify(token, 'secret', function (err, user) {
         if (err) {
             console.error(err);
             res.status(401).end();
