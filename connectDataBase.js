@@ -1,11 +1,12 @@
 var pg = require('pg');
+var pool = new pg.Pool();
 var conString = "postgres://postgres:123456@localhost/mymechanic";
 
 
 
   var query = function (sql, params) {
     return new Promise(function (resolve, reject) {
-      pg.connect(conString, function (err, client, done) {
+      pool.connect(conString, function (err, client, done) {
         if (err) {
         console.log(err);
         };
