@@ -14,10 +14,10 @@ const poolConfig = {
 
 const pool = new Pool(poolConfig);
 
-const get = co.wrap(function* (sql, params) {
-    const rows = yield query(sql, params);
+const get = async function (sql, params) {
+    const rows = await query(sql, params);
     return rows[0];
-});
+};
 
 const query = function(sql, params) {
 
@@ -33,10 +33,6 @@ const query = function(sql, params) {
         }
     });
 };
-
-pool.on('error', function(err, client) {
-    logger.error('idle client error', err.message, err.stack);
-});
 
 module.exports = {
     query: query,
