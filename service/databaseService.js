@@ -20,27 +20,17 @@ const get = co.wrap(function* (sql, params) {
 });
 
 const query = function(sql, params) {
-    return new Promise(function(resolve, reject) {
-        pool.connect(function(err, client, done) {
-            if (err) {
-                console.error(err);
-                reject(e);
-            }
-            const query = client.query(sql, params);
-            const rows = [];
-            query.on('error', function(e) {
-                done();
-                console.error(sql + ' -> ' + params);
-                reject(e);
-            });
-            query.on('row', function(row) {
-                rows.push(row);
-            });
-            query.on('end', function(result) {
-                done();
-                resolve(rows);
-            });
-        });
+
+    (async (resolve, reject) => {
+        const client = await pool.connect();
+        try {
+          const res = await client.query(sql, params);
+          return res;
+        } catch (err) {
+            console.log(err);
+        } finally {
+            client.release
+        }
     });
 };
 
