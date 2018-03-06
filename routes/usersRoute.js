@@ -3,11 +3,11 @@ const router = require('express').Router();
 const connectDataBase = require("../connectDataBase.js");
 const co = require('co');
 const sessionService = require('../service/sessionService.js');
+const userService = require('../service/userService');
 
-router.get('/consultaCliente', function(req, res){
-	connectDataBase.listCliente().then(function(resultado){
-		res.send(resultado) ;
-	})
+router.get('/consultaCliente', async function(req, res){
+	let result = await userService.listClient();
+		res.send(result) ;
 });
 
 router.post('/adicionaPessoa', function(req, res){

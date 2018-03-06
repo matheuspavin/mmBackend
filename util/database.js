@@ -50,5 +50,5 @@ pool.on('error', function(err, client) {
 
 module.exports = {
     query: query,
-get: get
+    get: get
 };
