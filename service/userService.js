@@ -12,6 +12,16 @@ var insertPerson = function(person){
     return query(query1, params)
 };
 
+module.exports.deletePerson = function(person){
+    var query1 = "DELETE from person where id_person = $1";
+    var params = [person.idPerson];
+    return query(query1, params)
+  };
+
+
+
+
+
 
 module.exports = {
     listClient
