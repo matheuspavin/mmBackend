@@ -12,14 +12,13 @@ router.get('/', async function(req, res){
 
 router.post('/', function(req, res){
 	const newPessoa = req.body;
-	connectDataBase.insertPessoa(newPessoa).then(function(resultado){
-		res.send(resultado) ;
-	})
+	let result = await userService.insertPerson(newPerson);
+	res.send(result);
 });
 
 router.post('/deletdelete', function(req, res){
 	const delPessoa = req.body;
-	connectDataBase.deletaPessoa(delPessoa).then(function(resultado){
+	connectDataBase.deletePerson(delPessoa).then(function(resultado){
 		res.send(resultado) ;
 	})
 });
