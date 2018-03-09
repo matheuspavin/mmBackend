@@ -81,19 +81,6 @@ var conString = "postgres://postgres:123456@localhost/mymechanic";
       });
   };
 
-  module.exports.insertPessoa = function(pessoa){
-    var query1 = "INSERT INTO pessoa(nm_pessoa, pct) VALUES($1,$2)";
-    var params = [pessoa.nmPessoa, pessoa.pct];
-    return query(query1, params)
-  };
-
-
-  module.exports.deletaPessoa = function(pessoa){
-    var query1 = "DELETE from pessoa where nr_pessoa = $1";
-    var params = [pessoa.nr_pessoa];
-    return query(query1, params)
-  };
-
   module.exports.listAll = function(){
     var query1 = "select c.dt_cheque, c.nr_cheque, p.nm_pessoa, p.pct, c.vl_cheque, c.vl_receber from cheque c, pessoa p where c.nr_pessoa = p.nr_pessoa";
     return query(query1, [])
