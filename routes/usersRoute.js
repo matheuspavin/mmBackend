@@ -11,16 +11,15 @@ router.get('/', async function(req, res){
 });
 
 router.post('/', function(req, res){
-	const newPessoa = req.body;
+	const newPerson = req.body;
 	let result = await userService.insertPerson(newPerson);
 	res.send(result);
 });
 
 router.post('/deletdelete', function(req, res){
-	const delPessoa = req.body;
-	connectDataBase.deletePerson(delPessoa).then(function(resultado){
-		res.send(resultado) ;
-	})
+	const person = req.body;
+	let result = userService.deletePerson(person);
+	res.send(resultado) ;
 });
 
 module.exports = router;
