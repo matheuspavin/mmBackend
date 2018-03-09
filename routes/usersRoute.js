@@ -5,19 +5,19 @@ const co = require('co');
 const sessionService = require('../service/sessionService.js');
 const userService = require('../service/userService');
 
-router.get('/consultaCliente', async function(req, res){
+router.get('/', async function(req, res){
 	let result = await userService.listClient();
 		res.send(result) ;
 });
 
-router.post('/adicionaPessoa', function(req, res){
+router.post('/', function(req, res){
 	const newPessoa = req.body;
 	connectDataBase.insertPessoa(newPessoa).then(function(resultado){
 		res.send(resultado) ;
 	})
 });
 
-router.post('/deletaPessoa', function(req, res){
+router.post('/deletdelete', function(req, res){
 	const delPessoa = req.body;
 	connectDataBase.deletaPessoa(delPessoa).then(function(resultado){
 		res.send(resultado) ;
