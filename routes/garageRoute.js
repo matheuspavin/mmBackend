@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const database = require('../util/database.js');
+const garageService = require('../service/garageService');
 
-router.get('/garage', function (req, res, next) {
-    const user = req.user;
-    database.query("select * from mymechanic.garage", []).then(function (garages) {
-        res.json(garages);
-    });
+router.get('/', async function (req, res, next) {
+	const user = req.user;
+	let result = await garageService.getGarages();
+    res.json(garages);
 });
 
-router.post('/garage', function(req, res){
+router.post('/', function(req, res){
 	var garage = req.body;
 	banco.insertGarage(garage).then(function(result){
 		result = result[0];
