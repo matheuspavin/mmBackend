@@ -4,13 +4,13 @@ const Pool = require('pg-pool');
 const config = require('./config/config');
 
 const poolConfig = {
-    user: "postgres",
-    database: "mymechanic",
-    password: 123456,
-    host: "localhost",
-    port: "5432",
-    max: 5,
-    idleTimeoutMillis: 30000
+    user: config.database.user,
+    database: config.database.database,
+    password: config.database.password,
+    host: config.database.host,
+    port: config.database.port,
+    max: config.database.max,
+    idleTimeoutMillis: config.database.idleTimeoutMillis
 };
 
 const pool = new Pool(poolConfig);
