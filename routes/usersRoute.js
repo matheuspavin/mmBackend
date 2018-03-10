@@ -16,7 +16,7 @@ router.post('/', function(req, res){
 	res.send(result);
 });
 
-router.post('/deletdelete', function(req, res){
+router.post('/delete', function(req, res){
 	const person = req.body;
 	let result = userService.deletePerson(person);
 	res.send(resultado) ;
