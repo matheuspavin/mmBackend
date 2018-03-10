@@ -3,7 +3,7 @@ const router = require('express').Router();
 const co = require('co');
 const sessionService = require('../service/sessionService.js');
 
-router.post('/customer', function(req, res){
+router.post('/', function(req, res){
 	var customer = req.body;
 	banco.insertCustomer(customer).then(function(result){
 		result = result[0];
