@@ -13,7 +13,7 @@ const insertGarage = function (newGarage) {
         newGarage.born,
         newGarage.cellphone,
         newGarage.description
-     ]) 
+     ])
 };
 
 module.exports = {
