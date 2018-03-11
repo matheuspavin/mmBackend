@@ -20,19 +20,30 @@ const get = async function (sql, params) {
     return rows[0];
 };
 
-const query = function(sql, params) {
-    console.log(sql);
-    (async (resolve, reject) => {
-        const client = await pool.connect();
-        try {
-          const res = await client.query(sql, params);
-          console.log(res);
-          return res;
-        } catch (err) {
-            console.log(err);
-        } finally {
-            client.release
-        }
+// TODO - Refatorar  e fazer upgrade do PG - https://node-postgres.com/guides/upgrading
+const query = function (sql, params) {
+    return new Promise(function (resolve, reject) {
+        pool.connect(function (err, client, done) {
+            if (err) {
+                logger.info(err);
+            }
+            const handledSql = handleInCondition(sql, params);
+            const query = client.query(handledSql, params);
+            const rows = [];
+            query.on('error', function (e) {
+                done();
+                logger.info(sql + ' -> ' + params);
+                logger.info(e);
+                reject(e);
+            });
+            query.on('row', function (row) {
+                rows.push(convertObjectToCamelCase(row));
+            });
+            query.on('end', function (result) {
+                done();
+                resolve(rows);
+            });
+        });
     });
 };
 
@@ -63,6 +74,7 @@ const convertObjectToCamelCase = function (obj) {
     }
     return obj;
 };
+
 module.exports = {
     query: query,
     get: get
