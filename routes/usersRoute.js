@@ -10,15 +10,15 @@ router.get('/', async function(req, res){
 		res.send(result) ;
 });
 
-router.post('/', function(req, res){
+router.post('/', async function(req, res){
 	const newPerson = req.body;
 	let result = await userService.insertPerson(newPerson);
 	res.send(result);
 });
 
-router.post('/delete', function(req, res){
+router.post('/delete', async function(req, res){
 	const person = req.body;
-	let result = userService.deletePerson(person);
+	let result = await userService.deletePerson(person);
 	res.send(resultado) ;
 });
 
