@@ -21,12 +21,10 @@ const get = async function (sql, params) {
 };
 
 const query = function(sql, params) {
-    console.log(sql);
     (async (resolve, reject) => {
         const client = await pool.connect();
         try {
           const res = await client.query(sql, params);
-          console.log(res);
           return res;
         } catch (err) {
             console.log(err);
