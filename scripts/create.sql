@@ -35,8 +35,8 @@ create table mymechanic.customer (
   primary key (id)
 );
 
-create table mymechanic.user (
-  id integer NOT NULL DEFAULT nextval('mymechanic.seq_user'),
+create table mymechanic.person (
+  id integer NOT NULL DEFAULT nextval('mymechanic.seq_person'),
   id_customer integer,
   id_garage integer,
   primary key (id),
