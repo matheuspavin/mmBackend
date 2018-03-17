@@ -7,7 +7,7 @@ router.post('/signin', co.wrap(function* (req, res, next) {
     console.log(req);
     const user = yield sessionService.authenticate[req.body.type](req.body.email, req.body.password);
     if (user) {
-        const token = jwt.sign(user, 'cremefraiche');
+        const token = jwt.sign(user, 'secret');
         res.json(token);
         res.end();
     }

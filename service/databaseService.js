@@ -9,29 +9,25 @@ const poolConfig = {
     password: config.database.password,
     host: config.database.host,
     port: config.database.port,
-    max: config.database.max,
-    idleTimeoutMillis: config.database.idleTimeoutMillis
 };
 
 const pool = new Pool(poolConfig);
 
 const get = async function (sql, params) {
-    const rows = await query(sql, params);
-    return rows[0];
+    const result = await query(sql, params);
+    return result.rows;
 };
 
-const query = function(sql, params) {
-    (async (resolve, reject) => {
-        const client = await pool.connect();
-        try {
-          const res = await client.query(sql, params);
-          return res;
-        } catch (err) {
-            console.log(err);
-        } finally {
-            client.release
-        }
-    });
+const query = async function(sql, params) {
+    const client = await pool.connect();
+    try {
+        const res = await client.query(sql, params);
+        return res;
+    } catch (err) {
+        console.log(err);
+    } finally {
+        client.release();
+    }
 };
 
 const toCamelCase = function (text) {

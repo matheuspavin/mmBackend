@@ -5,7 +5,7 @@ create schema mymechanic;
 
 CREATE SEQUENCE mymechanic.seq_garage START 101;
 CREATE SEQUENCE mymechanic.seq_customer START 101;
-CREATE SEQUENCE mymechanic.seq_user START 101;
+CREATE SEQUENCE mymechanic.seq_person START 101;
 CREATE SEQUENCE mymechanic.seq_review START 101;
 CREATE SEQUENCE mymechanic.seq_answer START 101;
 
@@ -68,5 +68,5 @@ create table mymechanic.answer (
   foreign key (id_garage) references mymechanic.garage (id)
 );
 
-ALTER TABLE mymechanic.user
+ALTER TABLE mymechanic.person
 ADD password text;

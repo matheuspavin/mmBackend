@@ -26,7 +26,7 @@ app.options('*', function (req, res, next) {
 });
 
 app.use('/', require('./routes/sessionRoute'));
-app.use('/garage', sessionService.isAuthenticated, garageRoute);
+app.use('/garages', sessionService.isAuthenticated, garageRoute);
 app.use('/customer', sessionService.isAuthenticated, customerRoute);
 app.use('/users', sessionService.isAuthenticated, usersRoute);
 

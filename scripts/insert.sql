@@ -22,8 +22,7 @@ Body for localhost:8081/insert/costumer
     "car":"Peugeot",
     "cellphone":"88555555"
 }
-
-
+\
 INSERT INTO mymechanic.garage (id,name,email,cep,born_year,cellphone,description) VALUES
     (1000, 'Martelinho de ouro','martelinhodeouro@gmail.com.br', 89058254,2000, 4830282363,'Oficina visando melhor atendimento ao cliente'),
     (1001, 'Rei do Auto Center','reidoautorcenter@gmail.com.br', 15812070,2012, 4896048616,'A oficina com melhor custo/beneficio '),
@@ -40,8 +39,6 @@ INSERT INTO mymechanic.garage (id,name,email,cep,born_year,cellphone,description
 INSERT INTO mymechanic.customer (id, name, email, cep, born_year, profession, car, sex, cellphone) VALUES
     (1001, 'Matheus', 'pavinmatheus@gmail.com.br', 88070340, 1987, 'desenvolvedor', 'pug', 'male', 48999668528);
 
-INSERT INTO mymechanic."user" (id, id_customer, id_garage, password) VALUES (251,1001,null,123456);
+INSERT INTO mymechanic."person" (id, id_customer, id_garage, password) VALUES (251,1001,null,123456);
 
-insert into mymechanic."user" (id, id_garage, password) values (251, 1000, 123456);
-
-select * from mymechanic."user"
+select * from mymechanic."person"

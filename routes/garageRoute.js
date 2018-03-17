@@ -5,7 +5,8 @@ const garageService = require('../service/garageService');
 router.get('/', async function (req, res, next) {
 	const user = req.user;
 	let result = await garageService.getGarages();
-    res.json(garages);
+	console.log(result);
+    return res.json(result);
 });
 
 router.post('/', function(req, res){

@@ -2,8 +2,8 @@ var config = {};
 
 config.database = {};
 config.database.user = 'postgres';
-config.database.db = 'mymechanic';
-config.database.pw = '123456';
+config.database.database = 'mymechanic';
+config.database.password = '123456';
 config.database.host = 'localhost';
 config.database.port = 5432;
 config.database.maxConnections = 10;
