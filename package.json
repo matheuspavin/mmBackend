@@ -13,6 +13,7 @@
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.0",
     "pg": "^7.4.1",
+    "request": "^2.85.0",
     "ui-router": "^1.0.0-alpha.3"
   }
 }
