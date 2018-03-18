@@ -34,5 +34,5 @@ app.use('/cars', sessionService.isAuthenticated, carsRoute);
 
 
 const server = app.listen(8081, function () {
-	console.log("meuMecanico rodando em modo desenvolvimento no ip: ", server.address().address, " e na porta", server.address().port);
+	console.log("MyMechanic is running in development mode on ", server.address().address, " in the port", server.address().port);
 });
