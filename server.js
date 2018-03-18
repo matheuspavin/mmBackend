@@ -4,10 +4,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const sessionService = require('./service/sessionService.js');
 
-var customerRoute = require('./routes/customerRoute')
-var garageRoute = require('./routes/garageRoute')
-var sessionRoute = require('./routes/sessionRoute')
-var usersRoute = require('./routes/usersRoute')
+var customerRoute = require('./routes/customerRoute');
+var garageRoute = require('./routes/garageRoute');
+var sessionRoute = require('./routes/sessionRoute');
+var usersRoute = require('./routes/usersRoute');
+var carsRoute = require('./routes/carsRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -29,6 +30,7 @@ app.use('/', require('./routes/sessionRoute'));
 app.use('/garages', sessionService.isAuthenticated, garageRoute);
 app.use('/customer', sessionService.isAuthenticated, customerRoute);
 app.use('/users', sessionService.isAuthenticated, usersRoute);
+app.use('/cars', sessionService.isAuthenticated, carsRoute);
 
 
 const server = app.listen(8081, function () {
