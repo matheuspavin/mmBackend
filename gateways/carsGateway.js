@@ -3,7 +3,7 @@ const config = require('../config/config');
 
 const getBrands = function (typeOfVehicle) {
     const request = {
-        url: `${config.brands.url}${typeOfVehicle}/marcas`,
+        url: `${config.cars.brands}${typeOfVehicle}/marcas`,
         method: 'GET',
         headers: {
             'Content-Type': 'application/json;charset=UTF-8',
