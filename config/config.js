@@ -9,5 +9,6 @@ config.database.port = 5432;
 config.database.maxConnections = 10;
 config.database.idleTimeoutMillis = 30000;
 config.runningMode = 'dev';
+config.brands.url = 'https://fipe.parallelum.com.br/api/v1/'
 
 module.exports = config;

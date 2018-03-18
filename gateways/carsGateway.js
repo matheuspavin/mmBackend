@@ -1,9 +1,9 @@
 const rest = require('../infra/rest');
 const config = require('../config/config');
 
-const getBrands = function () {
+const getBrands = function (typeOfVehicle) {
     const request = {
-        url: `${config.cars.url}`,
+        url: `${config.brands.url}${typeOfVehicle}/marcas`,
         method: 'GET',
         headers: {
             'Content-Type': 'application/json;charset=UTF-8',
