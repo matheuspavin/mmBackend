@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const database = require('../util/database.js');
+const database = require('../service/databaseService');
 const garageService = require('../service/garageService');
 
 router.get('/', async function (req, res, next) {

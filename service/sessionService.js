@@ -1,4 +1,4 @@
-const database = require('../util/database.js');
+const database = require('./databaseService');
 const jwt = require('jsonwebtoken');
 
 const authenticate = {

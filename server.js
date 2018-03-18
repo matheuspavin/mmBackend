@@ -4,11 +4,11 @@ const app = express();
 const bodyParser = require('body-parser');
 const sessionService = require('./service/sessionService.js');
 
-var customerRoute = require('./routes/customerRoute');
-var garageRoute = require('./routes/garageRoute');
-var sessionRoute = require('./routes/sessionRoute');
-var usersRoute = require('./routes/usersRoute');
-var carsRoute = require('./routes/carsRoute');
+const customerRoute = require('./routes/customerRoute');
+const garageRoute = require('./routes/garageRoute');
+const sessionRoute = require('./routes/sessionRoute');
+const usersRoute = require('./routes/usersRoute');
+const carsRoute = require('./routes/carsRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
