@@ -27,6 +27,7 @@ const getCars = function (typeOfVehicle, brand) {
 
 
 module.exports = {
-    getBrands
+    getBrands,
+    getCars
 }
 
