@@ -7,7 +7,7 @@ router.get('/brands', async function (req, res, next) {
     return res.json(result);
 });
 
-router.get('/cars', async function (req, res, next) {
+router.get('/brands/models', async function (req, res, next) {
     const type = req.query.type;
     const brand = req.query.brand;
     const result = await carsService.getCars(type, brand);
