@@ -13,7 +13,20 @@ const getBrands = function (typeOfVehicle) {
     return rest(request);
 };
 
+const getCars = function (typeOfVehicle, brand) {
+    const request = {
+        url: `${config.cars.cars}${typeOfVehicle}/marcas`,
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+        },
+        json: true
+    };
+    return rest(request);
+};
+
 
 module.exports = {
     getBrands
 }
+
